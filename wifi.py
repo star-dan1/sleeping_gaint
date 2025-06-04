@@ -31,13 +31,13 @@ class Wifi:
         return self.wlan.scan()
 
     
-wifi = Wifi()
-# print(wifi.scan())
-all_wifi =  wifi.scan()
-for wifi_name in all_wifi:
-    print(wifi_name[0])
-wifi.connect_to_wifi("New Star", "Daniel123")
-print(wifi.is_wifi_connected())
+# wifi = Wifi()
+# # print(wifi.scan())
+# all_wifi =  wifi.scan()
+# for wifi_name in all_wifi:
+#     print(wifi_name[0])
+# wifi.connect_to_wifi("New Star", "Daniel123")
+# print(wifi.is_wifi_connected())
 
 
 # import network
