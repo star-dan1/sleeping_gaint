@@ -32,8 +32,11 @@ class Communication():
       return {"status": "failed", "message":"Could not send message, no wifi connection"}
     host, msg = self.com.recv()
     if msg:             # msg == None if timeout in recv()
+        # "MOVE 500"
         print(host, msg)
+        action = msg.split(" ")[0]
+        step = msg.split(" ")[1]
         if msg == b'end':
-            return {"status": "success", "message": "End of message"}
+            return {"status": "success", "message": [action, int(step)]}
         return {"status": "success", "message": msg.decode('utf-8')}
     return {"status": "failed", "message": "No message received"}

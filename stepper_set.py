@@ -132,3 +132,14 @@ leg_base()
     
 # except KeyboardInterrupt:
 #     print('Keyboard interrupt')
+
+
+from communication import Communication
+from actions import Actions
+espNow = Communication()
+espNow.sendMessage("Hello")
+# while True:
+#       msg = espNow.recieve_message()
+#       switch(msg):
+#             case Actions.MOVE:
+#                 print("move")

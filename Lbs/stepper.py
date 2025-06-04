@@ -85,13 +85,13 @@ class Motor:
         self.step_until(target, dir=dir)
         
     def step_degrees(self, degrees):
-    if degrees < 0 or degrees > 360:
-        raise ValueError("Degrees should be between 0 and 360")
+        if degrees < 0 or degrees > 360:
+            raise ValueError("Degrees should be between 0 and 360")
 
-    steps_to_take = int(degrees / 360 * self.maxpos)
+        steps_to_take = int(degrees / 360 * self.maxpos)
 
-    self.reset()  # Reset current position to zero
-    self.step(steps_to_take)
+        self.reset()  # Reset current position to zero
+        self.step(steps_to_take)
 
 class FullStepMotor(Motor):
     stepms = 5

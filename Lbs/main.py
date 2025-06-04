@@ -29,22 +29,15 @@ class Wifi:
 
     def scan(self):
         return self.wlan.scan()
-        
-    def set_AP(self):
-        ap = network.WLAN(network.WLAN.IF_AP)
-        ap.config(ssid = 'ESP AP')
-        ap.config(max_clients=1)
-        ap.active(True)
-		
 
     
-# wifi = Wifi()
-# # print(wifi.scan())
-# all_wifi =  wifi.scan()
-# for wifi_name in all_wifi:
-#     print(wifi_name[0])
-# wifi.connect_to_wifi("New Star", "Daniel123")
-# print(wifi.is_wifi_connected())
+wifi = Wifi()
+# print(wifi.scan())
+all_wifi =  wifi.scan()
+for wifi_name in all_wifi:
+    print(wifi_name[0])
+wifi.connect_to_wifi("ESP AP", "Daniel123")
+print(wifi.is_wifi_connected())
 
 
 # import network

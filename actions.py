@@ -1,4 +1,6 @@
 from enum import Enum
 
 class Actions(Enum):
-  MOVE = True
+  MOVE = 0
+  STOP = 1
+  SIT = 2
