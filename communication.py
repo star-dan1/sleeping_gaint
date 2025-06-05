@@ -4,7 +4,8 @@ from wifi import Wifi
           
 class Communication():
   def __init__(self, peer=None):
-    self.is_wifi_conneted = Wifi.is_wifi_connected()
+    self.wifi = Wifi()
+    self.is_wifi_connected = self.wifi.is_wifi_connected()
     self.peer = peer
     self.com = espnow.ESPNow()
     self.com.active(True)
