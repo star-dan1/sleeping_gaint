@@ -10,6 +10,8 @@ stepper_motor7 = stepper.HalfStepMotor.frompins(IN25, IN26, IN27, IN28, stepms =
 stepper_motor8 = stepper.HalfStepMotor.frompins(IN29, IN30, IN31, IN32, stepms = 2)
 
 
+PEER = Wifi.get_mac_address()
+
 communicate = Communication()
 communicate.sendMessage("MOVE 500")
 
@@ -30,8 +32,20 @@ def await_response():
         response = False
     return True
 
+
 wifi = Wifi()
 wifi.set_AP()
+
+
+def start_working():
+    wifi.scan()
+    # print("Starting to work")
+    # move(1000)
+    # communicate.sendMessage("STOP 0")
+    # print("Done working")
+    # return True
+
+
 
 
 res = await_response()

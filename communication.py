@@ -3,24 +3,25 @@ from wifi import Wifi
 
           
 class Communication():
-  def __init__(self, peer=False):
+  def __init__(self, peer=None):
     self.is_wifi_conneted = Wifi.is_wifi_connected()
     self.peer = peer
     self.com = espnow.ESPNow()
     self.com.active(True)
     
-  def _set_peer(self):
-    if not self.peer:
-      return False
+  def get_peer(self):
+    return self.peer
+    
+  def set_peer(self, peer=None):
+    if peer:
+      self.peer = peer
     self.com.add_peer(self.peer)
     return True
     
   def sendMessage(self, message):
     if not self.is_wifi_connected:
       return {"status": "failed", "message":"Could not send message, no wifi connection"}
-    if not self._set_peer():
-      return {"status": "failed", "message": "Could not set peer"}
-    self._set_peer()
+    self.set_peer()
     self.com.send(self.peer, message)
     print(f"Sent message: {message}")
     return {"status": "success", "message": "Message sent"}

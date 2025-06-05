@@ -1,4 +1,5 @@
 import network
+import ubinascii
 import time
 
 
@@ -9,6 +10,12 @@ class Wifi:
         self.wlan = network.WLAN()
         self.wlan.active(True)
         
+    def get_mac_address(self):
+        mac = self.wlan.config('mac')
+        if mac:
+            return ubinascii.hexlify(mac).decode('utf-8')
+        else:
+            return None
 
     def connect_to_wifi(self, ssid, key, timeout=10):
         try:
@@ -29,6 +36,15 @@ class Wifi:
 
     def scan(self):
         return self.wlan.scan()
+    
+    def disconnect(self):
+        if self.is_connected:
+            self.wlan.disconnect()
+            self.is_connected = False
+            print("Disconnected from WiFi")
+        else:
+            print("Not connected to any WiFi network")
+            
         
     def set_AP(self):
         ap = network.WLAN(network.WLAN.IF_AP)
